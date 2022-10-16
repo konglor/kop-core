@@ -6,8 +6,15 @@ netty:
     allocator:
       max-order: 3
 datasources:
-  default:
+  accountserver:
     url: jdbc:sqlserver://localhost:7508;databaseName=accountserver
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: 'Y87dc#$98'
+    schema-generate: NONE
+    dialect: SQL_SERVER
+  gameserver:
+    url: jdbc:sqlserver://localhost:7508;databaseName=gameserver
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
     username: sa
     password: 'Y87dc#$98'
