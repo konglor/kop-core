@@ -5,20 +5,20 @@ import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Produces
-import mu.KotlinLogging
+import org.slf4j.LoggerFactory
 
 @Controller("/test")
 class TestController {
-  private val log = KotlinLogging.logger {}
+  private val log = LoggerFactory.getLogger(TestController::class.java)
 
   @Get("/hello")
   @Produces(MediaType.TEXT_PLAIN)
   fun hello(): HttpResponse<String> {
     try {
-      log.info { "ok"}
+      log.info("ok")
       return HttpResponse.ok("hello")
     } catch (e: Exception) {
-      log.info { "${e.message}"}
+      log.error(e.message)
       return HttpResponse.serverError()
     }
   }

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import jakarta.inject.Inject
-import mu.KotlinLogging
 
 @MicronautTest
 class TestController {
