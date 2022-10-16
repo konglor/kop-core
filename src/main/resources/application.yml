@@ -7,9 +7,16 @@ netty:
       max-order: 3
 datasources:
   default:
-    url: jdbc:sqlserver://localhost:1433;databaseName=accountserver
+    url: jdbc:sqlserver://localhost:7508;databaseName=accountserver
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
     username: sa
     password: 'Y87dc#$98'
-    schema-generate: CREATE_DROP
+    schema-generate: NONE
     dialect: SQL_SERVER
+jpa:
+  default:
+    properties:
+      hibernate:
+        bytecode:
+          provider: none
+          

@@ -24,12 +24,16 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
 
-    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.6'
+    implementation group: 'ch.qos.logback', name: 'logback-classic'
 
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
     runtimeOnly "io.micronaut.configuration:micronaut-jdbc-tomcat"
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    implementation("javax.annotation:javax.annotation-api")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+    compileOnly("io.micronaut.sql:micronaut-jdbc-hikari")
 
 }
 
