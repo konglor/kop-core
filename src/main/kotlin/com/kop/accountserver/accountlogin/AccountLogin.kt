@@ -22,8 +22,8 @@ open class AccountLogin (
   @Column(name = "password", nullable = true)
   open val password: String? = null,
 
-  //@Column(name = "originalPassword", nullable = true)
-  //open val originalPassword: String? = null,
+  @Column(name = "originalPassword", nullable = true)
+  open val originalPassword: String? = null,
 
   @Column(name = "sid", nullable = false)
   open val sid: Int? = null,

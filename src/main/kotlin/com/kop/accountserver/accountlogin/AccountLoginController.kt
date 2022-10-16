@@ -11,9 +11,14 @@ class AccountLoginController(private val accountLoginService: AccountLoginServic
   private val log = LoggerFactory.getLogger(AccountLoginController::class.java)
 
   @Get("/{id}")
-  fun find(@PathVariable id: Int): HttpResponse<String?> {
-    val accountLogin: AccountLogin? = accountLoginService.findById(id).get()
-    val name: String? = accountLogin?.name
-    return HttpResponse.ok(name)
+  fun find(@PathVariable id: Int): HttpResponse<AccountLogin?> {
+    try {
+      val accountLogin: AccountLogin? = accountLoginService.findById(id).get()
+      //val name: String? = accountLogin?.name
+      return HttpResponse.ok(accountLogin)
+    } catch (e: Exception) {
+      log.error(e.message, e)
+      return HttpResponse.serverError(null)
+    }
   }
 }
