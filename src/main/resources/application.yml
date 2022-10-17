@@ -6,6 +6,12 @@ netty:
     allocator:
       max-order: 3
 datasources:
+  default:
+    url: jdbc:sqlserver://localhost:7508;databaseName=core
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: 'Y87dc#$98'
+    dialect: SQL_SERVER
   accountserver:
     url: jdbc:sqlserver://localhost:7508;databaseName=accountserver
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -22,9 +28,23 @@ datasources:
     dialect: SQL_SERVER
 jpa:
   default:
+    packages-to-scan:
+      - 'com.kop.core'
+  accountserver:
     properties:
       hibernate:
         physical_naming_strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
         bytecode:
           provider: none
-
+  gameserver:
+    properties:
+      hibernate:
+        physical_naming_strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
+        bytecode:
+          provider: none
+flyway:
+  datasources:
+    default:
+      enabled: true
+      # default location: src/main/resources/db/migration
+      locations: classpath:migrations/core
