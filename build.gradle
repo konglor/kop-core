@@ -38,6 +38,10 @@ dependencies {
     implementation("io.micronaut.flyway:micronaut-flyway")
     runtimeOnly("org.flywaydb:flyway-sqlserver")
 
+    // dto validations
+    implementation("io.micronaut.beanvalidation:micronaut-hibernate-validator")
+    implementation("io.micronaut:micronaut-validation")
+
 }
 
 

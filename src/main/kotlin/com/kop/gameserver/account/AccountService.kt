@@ -9,4 +9,8 @@ class AccountService (private val repository: AccountRepository) {
   fun findById(id: Int): Optional<Account> {
     return repository.findById(id)
   }
+
+  fun findByActName(actName: String): Optional<Account> {
+    return repository.findByActName(actName)
+  }
 }
