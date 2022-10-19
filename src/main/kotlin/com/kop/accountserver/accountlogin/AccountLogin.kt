@@ -1,5 +1,6 @@
 package com.kop.accountserver.accountlogin
 
+import java.sql.Date
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -9,7 +10,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "account_login")
-open class AccountLogin (
+open class AccountLogin(
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,5 +36,17 @@ open class AccountLogin (
   open val enableLoginTick: Long? = null,
 
   @Column(name = "login_group", nullable = true)
-  open val loginGroup: String? = null
+  open val loginGroup: String? = null,
+
+  @Column(name = "last_login_time", nullable = true)
+  open val lastLoginTime: Date? = null,
+
+  @Column(name = "last_logout_time", nullable = true)
+  open val lastLogoutTime: Date? = null,
+
+  @Column(name = "last_login_ip", nullable = true)
+  open val lastLoginIp: Date? = null,
+
+  @Column(name = "ban", nullable = true)
+  open val ban: Int? = null
 )

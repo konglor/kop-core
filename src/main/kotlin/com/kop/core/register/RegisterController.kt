@@ -14,7 +14,7 @@ import javax.validation.Valid
 
 @Validated
 @Controller("api/register")
-class RegisterController {
+class RegisterController(private val registerService: RegisterService) {
   private val log = LoggerFactory.getLogger(RegisterController::class.java)
 
   @Inject
@@ -22,15 +22,13 @@ class RegisterController {
 
   @Version("1")
   @Post
-  fun register(@Body @Valid cmd: RegisterCommand): HttpResponse<String> {
+  fun register(@Body @Valid cmd: RegisterCommand): HttpResponse<String> { // ktlint-disable annotation
     try {
       val account = cmd.username?.let { accountService.findByActName(it) }
       account?.let {
         return HttpResponse.badRequest("username already exists")
       }
-      val passwordMd5 = cmd.password?.toMD5()
-      val usernameMd5 = cmd.username?.toMD5()
-      log.info("passwordMd5: $passwordMd5")
+      registerService.createAccount(cmd)
       return HttpResponse.ok("ok")
     } catch (e: Exception) {
       log.error(e.message, e)

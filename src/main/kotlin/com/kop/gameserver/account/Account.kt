@@ -9,12 +9,11 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "account")
-open class Account (
+open class Account(
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "act_id", nullable = false)
-  open val id: Int? = null,
+  open var id: Int? = null,
 
   @Column(name = "act_name", nullable = false)
   open val actName: String? = null,
@@ -29,5 +28,9 @@ open class Account (
   open val lastIp: String? = null,
 
   @Column(name = "disc_reason", nullable = false)
-  open val discReason: String? = null
+  open val discReason: String? = null,
+
+  @Column(name = "password", nullable = true)
+  open val password: String? = null
+
 )

@@ -6,5 +6,4 @@ import io.micronaut.transaction.annotation.TransactionalAdvice
 
 @Repository("accountserver")
 @TransactionalAdvice("accountserver")
-interface AccountLoginRepository : JpaRepository<AccountLogin, Int> {
-}
+interface AccountLoginRepository : JpaRepository<AccountLogin, Int>

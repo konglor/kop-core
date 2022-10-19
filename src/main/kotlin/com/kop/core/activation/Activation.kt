@@ -10,7 +10,7 @@ import javax.persistence.Id
 
 @Entity
 @MappedEntity
-open class Activation (
+open class Activation(
   @Id
   @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)

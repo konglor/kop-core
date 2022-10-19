@@ -14,7 +14,7 @@ class AccountLoginController(private val accountLoginService: AccountLoginServic
   fun find(@PathVariable id: Int): HttpResponse<AccountLogin?> {
     try {
       val accountLogin: AccountLogin? = accountLoginService.findById(id).get()
-      //val name: String? = accountLogin?.name
+      // val name: String? = accountLogin?.name
       return HttpResponse.ok(accountLogin)
     } catch (e: Exception) {
       log.error(e.message, e)
