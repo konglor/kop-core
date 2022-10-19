@@ -8,5 +8,7 @@ import java.util.*
 @Repository("gameserver")
 @TransactionalAdvice("gameserver")
 interface AccountRepository : JpaRepository<Account, Int> {
-  fun findByActName(actName: String): Optional<Account>
+
+  fun findOne(id: Int?): Account?
+  fun findByActName(actName: String): Account?
 }

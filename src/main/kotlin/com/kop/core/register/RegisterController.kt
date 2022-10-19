@@ -1,7 +1,8 @@
 package com.kop.core.register
 
-import com.kop.gameserver.account.Account
+import com.kop.extension.toMD5
 import com.kop.gameserver.account.AccountService
+import io.micronaut.core.version.annotation.Version
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
@@ -19,18 +20,21 @@ class RegisterController {
   @Inject
   lateinit var accountService: AccountService
 
+  @Version("1")
   @Post
-  fun register(@Body @Valid dto: RegisterDto): HttpResponse<String> {
+  fun register(@Body @Valid cmd: RegisterCommand): HttpResponse<String> {
     try {
-      val account = accountService.findByActName(dto.username)
-      account.get()?.let {
+      val account = cmd.username?.let { accountService.findByActName(it) }
+      account?.let {
         return HttpResponse.badRequest("username already exists")
       }
+      val passwordMd5 = cmd.password?.toMD5()
+      val usernameMd5 = cmd.username?.toMD5()
+      log.info("passwordMd5: $passwordMd5")
       return HttpResponse.ok("ok")
     } catch (e: Exception) {
       log.error(e.message, e)
       return HttpResponse.serverError(e.message)
     }
   }
-
 }

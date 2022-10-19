@@ -1,6 +1,13 @@
 micronaut:
   application:
     name: core
+  router:
+    versioning:
+      enabled: true
+      header:
+        names:
+          - 'X-API-VERSION'
+          - 'Accept-Version'
 netty:
   default:
     allocator:

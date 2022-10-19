@@ -6,11 +6,11 @@ import java.util.*
 @Singleton
 class AccountService (private val repository: AccountRepository) {
 
-  fun findById(id: Int): Optional<Account> {
-    return repository.findById(id)
+  fun findOne(id: Int): Account? {
+    return repository.findOne(id)
   }
 
-  fun findByActName(actName: String): Optional<Account> {
+  fun findByActName(actName: String): Account? {
     return repository.findByActName(actName)
   }
 }

@@ -13,7 +13,7 @@ class AccountController(private val accountService: AccountService) {
   @Get("/{id}")
   fun find(@PathVariable id: Int): HttpResponse<Account?> {
     try {
-      val account: Account? = accountService.findById(id).get()
+      val account: Account? = accountService.findOne(id)
       return HttpResponse.ok(account)
     } catch (e: Exception) {
       log.error(e.message, e)

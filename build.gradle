@@ -27,7 +27,7 @@ dependencies {
     implementation group: 'ch.qos.logback', name: 'logback-classic'
 
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
-    runtimeOnly "io.micronaut.configuration:micronaut-jdbc-tomcat"
+    //runtimeOnly "io.micronaut.configuration:micronaut-jdbc-tomcat"
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
