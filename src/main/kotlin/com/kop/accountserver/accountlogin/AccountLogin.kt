@@ -45,7 +45,7 @@ open class AccountLogin(
   open val lastLogoutTime: Date? = null,
 
   @Column(name = "last_login_ip", nullable = true)
-  open val lastLoginIp: Date? = null,
+  open val lastLoginIp: String? = null,
 
   @Column(name = "ban", nullable = true)
   open val ban: Int? = null
